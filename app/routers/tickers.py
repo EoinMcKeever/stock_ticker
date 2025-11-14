@@ -6,6 +6,7 @@ from app.database import get_db
 from app.models import User as UserModel, Ticker as TickerModel
 from app.schemas import AddTickerRequest, RemoveTickerRequest, Ticker, TickerCreate
 from app.auth import get_current_active_user
+from app.ticker_validator import validate_ticker
 
 router = APIRouter()
 
@@ -55,35 +56,43 @@ async def create_ticker(
 ):
     """
     Create a new ticker in the system.
-    This should be called after validating the ticker through your search logic.
+    Validates the ticker exists in real market data before adding.
     """
     symbol = ticker_data.symbol.upper()
 
-    # Check if ticker already exists
+    # Check if ticker already exists in database
     existing_ticker = db.query(TickerModel).filter(TickerModel.symbol == symbol).first()
     if existing_ticker:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Ticker {symbol} already exists"
-        )
+        # Check if user already has this ticker
+        if existing_ticker in current_user.tickers:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"You already have ticker {symbol} in your list"
+            )
 
-    # Validate type
-    if ticker_data.type not in ['stock', 'crypto']:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Type must be either 'stock' or 'crypto'"
-        )
+        # Ticker exists but user doesn't have it - add to user's list
+        current_user.tickers.append(existing_ticker)
+        db.commit()
+        db.refresh(existing_ticker)
+        return existing_ticker
 
-    # Create new ticker
+    # Validate ticker exists in market data
+    validated_data = await validate_ticker(symbol)
+
+    # Create new ticker with validated data
     new_ticker = TickerModel(
         symbol=symbol,
-        name=ticker_data.name,
-        type=ticker_data.type
+        name=validated_data['name'],
+        type=validated_data['type']
     )
 
     db.add(new_ticker)
     db.commit()
     db.refresh(new_ticker)
+
+    # Add ticker to user's list
+    current_user.tickers.append(new_ticker)
+    db.commit()
 
     return new_ticker
 
