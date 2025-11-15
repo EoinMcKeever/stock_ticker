@@ -22,14 +22,52 @@
         <div id="errorMessage" class="error-message"></div>
 
         <div class="tickers-section">
-            <h2>Your Tickers</h2>
-            <div id="loadingState" class="loading">
-                Loading your tickers...
+            <div class="section-header">
+                <h2>Your Tickers with AI Insights</h2>
+                <div class="header-actions">
+                    <button id="addTickerBtn" class="add-ticker-btn">+ Add Ticker</button>
+                    <button id="refreshAllBtn" class="refresh-btn">Refresh All</button>
+                </div>
             </div>
-            <div id="tickersGrid" class="tickers-grid" style="display: none;"></div>
+            <div id="loadingState" class="loading">
+                Loading your tickers and AI insights...
+            </div>
+            <div id="tickersContainer" style="display: none;"></div>
             <div id="emptyState" class="empty-state" style="display: none;">
                 <p>You don't have any tickers yet.</p>
-                <p style="margin-top: 10px; color: #667eea;">Add tickers using the API to see them here!</p>
+                <p style="margin-top: 10px; color: #667eea;">Click "Add Ticker" to get started!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Ticker Modal -->
+    <div id="addTickerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Ticker</h2>
+                <span class="close-modal" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="modalError" class="error-message"></div>
+                <div id="modalSuccess" class="success-message"></div>
+
+                <form id="addTickerForm">
+                    <div class="form-group">
+                        <label for="tickerSymbol">Ticker Symbol</label>
+                        <input
+                            type="text"
+                            id="tickerSymbol"
+                            name="symbol"
+                            placeholder="e.g., AAPL, TSLA, BTC-USD"
+                            required
+                            autocomplete="off"
+                        >
+                        <small style="color: #666; font-size: 12px; margin-top: 5px; display: block;">
+                            Enter stock symbol (e.g., AAPL, GOOGL) or crypto (e.g., BTC-USD, ETH-USD)
+                        </small>
+                    </div>
+                    <button type="submit" id="submitTickerBtn">Add Ticker</button>
+                </form>
             </div>
         </div>
     </div>

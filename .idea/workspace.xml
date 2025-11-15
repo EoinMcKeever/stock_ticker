@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642ea790-d31e-4bfe-9355-3afd5b6a3696" name="Changes" comment="added external api to pull news on stock tickers">
+    <list default="true" id="642ea790-d31e-4bfe-9355-3afd5b6a3696" name="Changes" comment="added frontend login and dashboard for each user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +136,7 @@
       <workItem from="1763063138627" duration="519000" />
       <workItem from="1763151597285" duration="4560000" />
       <workItem from="1763158589613" duration="3234000" />
-      <workItem from="1763217892067" duration="3146000" />
+      <workItem from="1763217892067" duration="4273000" />
     </task>
     <task id="LOCAL-00001" summary="Added ticker validation using yahoofinance api">
       <option name="closed" value="true" />
@@ -153,7 +154,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763223587668</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added frontend login and dashboard for each user">
+      <option name="closed" value="true" />
+      <created>1763225899055</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1763225899055</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +182,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added ticker validation using yahoofinance api" />
     <MESSAGE value="added external api to pull news on stock tickers" />
-    <option name="LAST_COMMIT_MESSAGE" value="added external api to pull news on stock tickers" />
+    <MESSAGE value="added frontend login and dashboard for each user" />
+    <option name="LAST_COMMIT_MESSAGE" value="added frontend login and dashboard for each user" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FastAPIProject$FastAPIProject.coverage" NAME="FastAPIProject Coverage Results" MODIFIED="1762804212001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
