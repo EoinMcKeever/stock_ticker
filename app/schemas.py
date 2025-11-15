@@ -77,3 +77,53 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: Optional[str] = None
+
+
+class NewsArticleBase(BaseModel):
+    title: str
+    summary: Optional[str] = None
+    url: str
+    source: Optional[str] = None
+    news_provider: Optional[str] = None
+    published_at: datetime
+    sentiment_score: Optional[float] = None
+
+
+class NewsArticleSchema(NewsArticleBase):
+    id: int
+    ticker_id: int
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class AIInsightBase(BaseModel):
+    insight_type: str
+    content: str
+    sentiment: Optional[str] = None
+    confidence_score: Optional[float] = None
+    sources_analyzed: Optional[int] = 0
+
+
+class AIInsightSchema(AIInsightBase):
+    id: int
+    ticker_id: int
+    news_article_id: Optional[int] = None
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class TickerDashboardData(BaseModel):
+    ticker_symbol: str
+    ticker_name: str
+    ticker_type: str
+    latest_news: List[NewsArticleSchema]
+    ai_insights: List[AIInsightSchema]
+    overall_sentiment: str
+    news_sources_count: int
+
+    class Config:
+        from_attributes = True

@@ -1,23 +1,30 @@
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy.orm import Session
-import uvicorn
+from contextlib import asynccontextmanager
 
-from app.database import engine, get_db
+from app.database import engine
 from app.models import Base
 from app.routers import auth, dashboard, tickers
+from app.routers import news  # NEW
 from app.config import settings
+from app.tasks.news_tasks import start_news_scheduler  # NEW
 
-# Create database tables
-Base.metadata.create_all(bind=engine)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    Base.metadata.create_all(bind=engine)
+    scheduler = start_news_scheduler()
+    yield
+    # Shutdown
+    scheduler.shutdown()
 
 app = FastAPI(
     title="Stock & Crypto Dashboard API",
-    description="Microservice for managing personalized stock and crypto dashboards",
-    version="1.0.0"
+    description="Microservice with AI-powered news analysis",
+    version="2.0.0",
+    lifespan=lifespan
 )
 
-# CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.ALLOWED_ORIGINS,
@@ -30,29 +37,19 @@ app.add_middleware(
 app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
 app.include_router(dashboard.router, prefix="/api/dashboard", tags=["Dashboard"])
 app.include_router(tickers.router, prefix="/api/tickers", tags=["Tickers"])
-
+app.include_router(news.router, prefix="/api/news", tags=["News & AI"])  # NEW
 
 @app.get("/")
 async def root():
     return {
-        "message": "Stock & Crypto Dashboard API",
-        "version": "1.0.0",
+        "message": "Stock & Crypto Dashboard API with AI News",
+        "version": "2.0.0",
         "status": "running"
     }
-
 
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
-
-
-if __name__ == "__main__":
-    uvicorn.run(
-        "main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=settings.DEBUG
-    )
 
 
 

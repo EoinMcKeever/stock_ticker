@@ -4,10 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="642ea790-d31e-4bfe-9355-3afd5b6a3696" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/ticker_validator.py" afterDir="false" />
+    <list default="true" id="642ea790-d31e-4bfe-9355-3afd5b6a3696" name="Changes" comment="Added ticker validation using yahoofinance api">
+      <change afterPath="$PROJECT_DIR$/app/routers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routers/news.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/news_service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/tasks/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/tasks/news_tasks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/test_news.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routers/tickers.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routers/tickers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,8 +144,19 @@
       <workItem from="1762802898235" duration="2903000" />
       <workItem from="1762975522399" duration="4114000" />
       <workItem from="1763063138627" duration="519000" />
-      <workItem from="1763151597285" duration="625000" />
+      <workItem from="1763151597285" duration="4560000" />
+      <workItem from="1763158589613" duration="3234000" />
+      <workItem from="1763217892067" duration="755000" />
     </task>
+    <task id="LOCAL-00001" summary="Added ticker validation using yahoofinance api">
+      <option name="closed" value="true" />
+      <created>1763152725828</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763152725828</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +172,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added ticker validation using yahoofinance api" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ticker validation using yahoofinance api" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FastAPIProject$FastAPIProject.coverage" NAME="FastAPIProject Coverage Results" MODIFIED="1762804212001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

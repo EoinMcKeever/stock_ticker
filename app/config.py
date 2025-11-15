@@ -18,6 +18,11 @@ class Settings(BaseSettings):
     # CORS settings
     ALLOWED_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:8000"]
 
+    ANTHROPIC_API_KEY: str = ""
+    ALPHAVANTAGE_API_KEY: str = ""
+    FINNHUB_API_KEY: str = ""
+    MARKETAUX_API_KEY: str = ""
+
     class Config:
         env_file = ".env"
         case_sensitive = True
